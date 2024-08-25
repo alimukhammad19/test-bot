@@ -4,7 +4,6 @@ from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandle
 from districts import districts
 from schools import schools
 from configs import BOT_TOKEN
-import aiohttp
 
 
 DB_URL = "postgresql://postgres:rsPwmbEFCxGjeRSMXoZLnDUZhhVubJOX@autorack.proxy.rlwy.net:38165/railway"
