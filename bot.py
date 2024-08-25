@@ -4,16 +4,16 @@ from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandle
 from districts import districts
 from schools import schools
 from configs import BOT_TOKEN
-
+import requests
 
 DB_URL = "postgresql://postgres:rsPwmbEFCxGjeRSMXoZLnDUZhhVubJOX@autorack.proxy.rlwy.net:38165/railway"
 
 async def get_dollar_rate():
     url = "https://api.exchangerate-api.com/v4/latest/USD"
     
-    async with aiohttp.ClientSession() as session:
+    async with requests.ClientSession() as session:
         async with session.get(url) as response:
-            if response.status == 200:
+            if requests.status == 200:
                 data = await response.json()
                 return data['rates']['UZS']  # O'zbekiston so'miga nisbatan kurs
             else:
