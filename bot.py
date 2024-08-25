@@ -6,6 +6,9 @@ from schools import schools
 from configs import BOT_TOKEN
 import aiohttp
 
+
+DB_URL = ""
+
 async def get_dollar_rate():
     url = "https://api.exchangerate-api.com/v4/latest/USD"
     
