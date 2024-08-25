@@ -7,7 +7,7 @@ from configs import BOT_TOKEN
 import aiohttp
 
 
-DB_URL = ""
+DB_URL = "postgresql://postgres:rsPwmbEFCxGjeRSMXoZLnDUZhhVubJOX@autorack.proxy.rlwy.net:38165/railway"
 
 async def get_dollar_rate():
     url = "https://api.exchangerate-api.com/v4/latest/USD"
