@@ -25,7 +25,7 @@ async def start(update: Update, context: CallbackContext):
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     await update.message.reply_text(
-        "Xush kelibsiz! Ushbu bot orqali Surxondaryo viloyati maktablari haqida ma'lumot olishingiz mumkin.\nQaysi tumanni tanlaysiz?",
+        "Xush kelibsiz!✅\n Ushbu bot orqali Surxondaryo viloyati maktablari haqida ma'lumot olishingiz mumkin.\nQaysi tumanni tanlaysiz?",
         reply_markup=reply_markup
     )
 
