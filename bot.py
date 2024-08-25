@@ -25,7 +25,7 @@ async def start(update: Update, context: CallbackContext):
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     await update.message.reply_text(
-        "Xush kelibsiz!✅\n Ushbu bot orqali Surxondaryo viloyati maktablari haqida ma'lumot olishingiz mumkin.\nQaysi tumanni tanlaysiz?",
+        "Xush kelibsiz!✅\nUshbu bot orqali Surxondaryo viloyati joylashgan maktablari haqida qisqacha ma'lumot olishingiz mumkin.✅\nTumanni tanlang!",
         reply_markup=reply_markup
     )
 
@@ -33,13 +33,13 @@ async def dollar(update: Update, context: CallbackContext):
     # Dollar kursini olish va foydalanuvchiga ko'rsatish
     dollar_rate = await get_dollar_rate()
     if dollar_rate:
-        await update.message.reply_text(f"Hozirgi dollar kursi: 1 USD = {dollar_rate} UZS")
+        await update.message.reply_text(f"💵Hozirda mamlakatimizda dollar kursi: 1 USD = {dollar_rate} UZS ga teng")
     else:
         await update.message.reply_text("Dollar kursini olishda xatolik yuz berdi.")
 
 async def help(update: Update, context: CallbackContext):
     await update.message.reply_text(
-        "muammo yuzaga kelgan bolsa 777777777"
+        "❌Muammo yuzaga kelgan bo'lsa murojaat qiling,\n\nMurojaat uchun:📞 +99890-411-01-35"
     )
 
 async def handle_text(update: Update, context: CallbackContext):
@@ -54,7 +54,7 @@ async def handle_text(update: Update, context: CallbackContext):
     if district_id is not None:
         school_list = schools.get(district_id, [])
         if not school_list:
-            await update.message.reply_text("Bu tumanda maktablar topilmadi.")
+            await update.message.reply_text("❌Bu tumanda maktablar topilmadi.")
             return
 
         keyboard = [
@@ -68,7 +68,7 @@ async def handle_text(update: Update, context: CallbackContext):
         )
     else:
         await update.message.reply_text(
-            "Xatolik!!! \n Tugmalardan foydalaning."
+            "❌Xatolik!!! \n Tugmalardan foydalaning.✅"
         )
 
 async def district_handler(update: Update, context: CallbackContext):
@@ -89,7 +89,7 @@ async def district_handler(update: Update, context: CallbackContext):
     keyboard.append([InlineKeyboardButton("Orqaga", callback_data='back')])
     reply_markup = InlineKeyboardMarkup(keyboard)
     await query.edit_message_text(
-        text=f"{district_name} tumanidagi maktablar ro'yxati:\n\nMaktabni tanlang:",
+        text=f"{district_name} tumanidagi maktablar ro'yxati:🏛\n\nMaktabni tanlang:",
         reply_markup=reply_markup
     )
 
@@ -106,7 +106,7 @@ async def school_handler(update: Update, context: CallbackContext):
             ]
             reply_markup = InlineKeyboardMarkup(keyboard)
             await query.edit_message_text(
-                "Xush kelibsiz! Ushbu bot orqali Surxondaryo viloyati maktablari haqida ma'lumot olishingiz mumkin.\nQaysi tumanni tanlaysiz?",
+                "Xush kelibsiz!✅\nUshbu bot orqali Surxondaryo viloyati joylashgan maktablari haqida qisqacha ma'lumot olishingiz mumkin.✅\nTumanni tanlang",
                 reply_markup=reply_markup
             )
         else:
@@ -124,7 +124,7 @@ async def school_handler(update: Update, context: CallbackContext):
             keyboard.append([InlineKeyboardButton("Orqaga", callback_data=f'back_{district_id}')])
             reply_markup = InlineKeyboardMarkup(keyboard)
             await query.edit_message_text(
-                text=f"{district_name} tumanidagi maktablar ro'yxati:\n\nMaktabni tanlang:",
+                text=f"{district_name} tumanidagi maktablar ro'yxati:🏛\n\nMaktabni tanlang:",
                 reply_markup=reply_markup
             )
         return
@@ -134,11 +134,11 @@ async def school_handler(update: Update, context: CallbackContext):
     if district_index in schools and 0 < school_index <= len(schools[district_index]):
         school_info = schools[district_index][school_index - 1]
         school_details = (
-            f"{school_info['name']} haqida ma'lumot:\n"
-            f"Direktor: {school_info['director']}\n"
-            f"Telefon: {school_info['phone']}\n"
-            f"O'qituvchilar soni: {school_info['teachers']}\n"
-            f"O'quvchilar soni: {school_info['students']}"
+            f"🏛{school_info['name']} haqida ma'lumot:\n\n"
+            f"🤵🏻‍♂️Direktor: {school_info['director']}\n\n"
+            f"📞Telefon: {school_info['phone']}\n\n"
+            f"👩🏻‍💼O'qituvchilar soni: {school_info['teachers']}\n\n"
+            f"👱🏻‍♂️👩O'quvchilar soni: {school_info['students']}"
         )
         await query.edit_message_text(
             text=school_details,
